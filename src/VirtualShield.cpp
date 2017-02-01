@@ -41,12 +41,12 @@
   asm(".global _printf_float");
   
   // For 32 bit boards, strlen_PF takes a char*, so this cast isn't needed
-  #if defined(ARDUINO_SAMD_MKR1000) || defined(_VARIANT_ARDUINO_101_X_)
+  #if defined(ARDUINO_SAMD_MKR1000) || defined(_VARIANT_ARDUINO_101_X_) || defined(__arm__)
 	#define uint_farptr_t	
   #endif
   
   // If it has dual serial ports, prefer the second one (pins 0, 1) for bluetooth.
-  #if defined(__AVR_ATmega32U4__) || defined(ARDUINO_SAMD_MKR1000) || defined(_VARIANT_ARDUINO_101_X_) || (__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
+  #if defined(__AVR_ATmega32U4__) || defined(ARDUINO_SAMD_MKR1000) || defined(_VARIANT_ARDUINO_101_X_) || (__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(TEENSYDUINO)
     #define VIRTUAL_SERIAL_PORT1 Serial1
     #define debugSerial
     #define debugSerialIn
